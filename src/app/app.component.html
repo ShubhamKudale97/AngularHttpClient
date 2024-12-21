@@ -1,0 +1,41 @@
+<h1>Http Client project runing</h1>
+
+<form (ngSubmit)="postDataComponent (myform)" #myform="ngForm">
+    <label for="userid">userId:- </label> <input  type="text" ngModel name="userid" 
+    #refuserid="ngModel" required="required"/> 
+    <label for="error" *ngIf="!refuserid.valid"> Insert User Id</label>
+    <br><br>
+    <label for="id">Id:- </label><input ngModel type="text" name="id" /> <br><br>
+    <label for="title">title:- </label><input ngModel  type="text" name="title" /> <br><br>
+    <label for="">body:- </label><input ngModel type="text" name="body" /> <br><br>
+    <input type="submit" value="Insert Data via post">
+</form>
+
+<hr>
+<input type="button" value="Get Single Data" (click)="getSingleDataComponent()"> <br/> 
+<input type="button" value="Put Replace" (click)="putDataComponent()"> <br/>
+<!-- <input type="button" value="Post Create/Insert" (click)="postDataComponent()"> <br/> -->
+<input type="button" value="Patch Update" (click)="patchDataComponent()"> <br/>
+<input type="button" value="Delete " (click)="deleteDataComponent()"> <br/>
+
+
+<input type="button" value="JSON Placeholder" (click)="getAllDataComponent()"> 
+
+<table border="1">
+
+<tr>
+    <th>User id</th>
+    <th>id</th>
+    <th>title</th>
+    <th>body</th>
+</tr>
+        <tr *ngFor="let print of data_interface">
+            <td>{{print.userId}}</td>
+            <td>{{print.id}}</td>
+            <td>{{print.title}}</td>
+            <td>{{print.body}}</td>
+        </tr>
+</table>
+
+<div *ngIf="data_interface.length == 0 "> No data Available</div>
+
